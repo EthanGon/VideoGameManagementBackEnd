@@ -3,7 +3,8 @@ const BASEURL = "https://api.igdb.com/v4/games";
 
 module.exports = {
   getGames: async (req, res) => {
-    res.status(200).json("getGames method");
+    const games = await Game.find();
+    res.status(200).json(games);
   },
   getGame: async (req, res) => {
     res.status(200).json("getGame method");
