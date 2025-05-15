@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
+const connectDB = require("./config/database");
 const gameRoutes = require("./routes/game");
 
 // Load config
 require("dotenv").config({ path: "./config/.env" });
+
+// Database Connection
+connectDB();
 
 // Routes
 app.use("/api/games", gameRoutes);
