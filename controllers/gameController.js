@@ -37,7 +37,9 @@ module.exports = {
       });
 
       if (!response.ok) {
-        throw Error(`The game with id = ${id} could not be found.`);
+        throw Error(
+          `The game with id = ${id} could not be found in the igdb api.`
+        );
       }
 
       const game = await Game.findOne({ gameId: id });
@@ -86,6 +88,24 @@ module.exports = {
     try {
       const { gameId, title, description, cover, status } = req.body;
 
+      const query = `fields name, id, summary, cover.image_id; where id = ${gameId};`;
+
+      const response = await fetch(BASEURL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Client-ID": process.env.VITE_TWITCH_CLIENT_ID,
+          Authorization: `Bearer ${process.env.VITE_TWITCH_ACCESS_TOKEN}`,
+        },
+        body: query,
+      });
+
+      if (!response.ok) {
+        throw Error(
+          `The game with id = ${gameId} could not be found in the igdb api.`
+        );
+      }
+
       const existingGame = await Game.findOne({ gameId });
 
       if (existingGame) {
@@ -123,7 +143,9 @@ module.exports = {
       });
 
       if (!response.ok) {
-        throw Error(`The game with id = ${id} could not be found.`);
+        throw Error(
+          `The game with id = ${id} could not be found in the igdb api.`
+        );
       }
 
       const game = await Game.findOne({ gameId: id });
@@ -141,6 +163,38 @@ module.exports = {
     }
   },
   deleteGame: async (req, res) => {
-    res.status(200).json("deleteGame method");
+    try {
+      const { id } = req.params;
+
+      const query = `fields name, id, summary, cover.image_id; where id = ${id};`;
+
+      const response = await fetch(BASEURL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Client-ID": process.env.VITE_TWITCH_CLIENT_ID,
+          Authorization: `Bearer ${process.env.VITE_TWITCH_ACCESS_TOKEN}`,
+        },
+        body: query,
+      });
+
+      if (!response.ok) {
+        throw Error(
+          `The game with id = ${id} could not be found in the igdb api.`
+        );
+      }
+
+      const game = await Game.findOne({ gameId: id });
+
+      if (!game) {
+        throw Error("Game has not been added to the list.");
+      }
+
+      await game.deleteOne();
+
+      res.status(200).json(game);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
   },
 };
