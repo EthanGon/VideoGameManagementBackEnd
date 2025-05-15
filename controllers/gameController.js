@@ -1,3 +1,4 @@
+const Game = require("../models/Game");
 const BASEURL = "https://api.igdb.com/v4/games";
 
 module.exports = {
@@ -41,7 +42,27 @@ module.exports = {
     }
   },
   addGame: async (req, res) => {
-    res.status(200).json("addGame method");
+    try {
+      const { gameId, title, description, cover, status } = req.body;
+
+      const existingGame = await Game.findOne({ gameId });
+
+      if (existingGame) {
+        throw Error("Already added game to your list.");
+      }
+
+      const game = await Game.create({
+        gameId,
+        title,
+        description,
+        cover,
+        status,
+      });
+
+      res.status(200).json(game);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
   },
   updateGame: async (req, res) => {
     res.status(200).json("updateGame method");
