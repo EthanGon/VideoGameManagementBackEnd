@@ -89,7 +89,7 @@ module.exports = {
       const existingGame = await Game.findOne({ gameId });
 
       if (existingGame) {
-        throw Error("Already added game to your list.");
+        throw Error("Already added game to the list.");
       }
 
       const game = await Game.create({
@@ -106,7 +106,39 @@ module.exports = {
     }
   },
   updateGame: async (req, res) => {
-    res.status(200).json("updateGame method");
+    try {
+      const { id } = req.params;
+      const { status } = req.body;
+
+      const query = `fields name, id, summary, cover.image_id; where id = ${id};`;
+
+      const response = await fetch(BASEURL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Client-ID": process.env.VITE_TWITCH_CLIENT_ID,
+          Authorization: `Bearer ${process.env.VITE_TWITCH_ACCESS_TOKEN}`,
+        },
+        body: query,
+      });
+
+      if (!response.ok) {
+        throw Error(`The game with id = ${id} could not be found.`);
+      }
+
+      const game = await Game.findOne({ gameId: id });
+
+      if (!game) {
+        throw Error("Game has not been added to the list.");
+      }
+
+      game.status = status;
+      await game.save();
+
+      res.status(200).json(game);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
   },
   deleteGame: async (req, res) => {
     res.status(200).json("deleteGame method");
