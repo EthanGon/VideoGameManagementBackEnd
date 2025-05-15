@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const helmet = require("helmet");
+const morgan = require("morgan");
 const connectDB = require("./config/database");
 const gameRoutes = require("./routes/game");
 
@@ -8,6 +10,16 @@ require("dotenv").config({ path: "./config/.env" });
 
 // Database Connection
 connectDB();
+
+// Secure express app
+app.use(helmet());
+
+// Body parser
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Logging
+app.use(morgan("dev"));
 
 // Routes
 app.use("/api/games", gameRoutes);
