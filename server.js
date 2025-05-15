@@ -2,11 +2,16 @@ const express = require("express");
 const app = express();
 const helmet = require("helmet");
 const morgan = require("morgan");
+const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
 const connectDB = require("./config/database");
 const gameRoutes = require("./routes/game");
 
 // Load config
 require("dotenv").config({ path: "./config/.env" });
+
+// Enable CORS
+app.use(cors(corsOptions));
 
 // Database Connection
 connectDB();
