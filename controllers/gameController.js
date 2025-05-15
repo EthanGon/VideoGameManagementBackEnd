@@ -53,7 +53,7 @@ module.exports = {
   },
   searchGames: async (req, res) => {
     try {
-      const query = `search "${req.params.query}"; fields name, id, summary, cover.image_id;`;
+      const query = `search "${req.params.query}"; fields name, id, summary, cover.image_id; limit 100;`;
 
       const response = await fetch(BASEURL, {
         method: "POST",
