@@ -16,8 +16,8 @@ module.exports = {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Client-ID": process.env.VITE_TWITCH_CLIENT_ID,
-          Authorization: `Bearer ${process.env.VITE_TWITCH_ACCESS_TOKEN}`,
+          "Client-ID": process.env.IGDB_TWITCH_CLIENT_ID,
+          Authorization: `Bearer ${process.env.IGDB_TWITCH_ACCESS_TOKEN}`,
         },
         body: query,
       });
@@ -59,8 +59,8 @@ module.exports = {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Client-ID": process.env.VITE_TWITCH_CLIENT_ID,
-          Authorization: `Bearer ${process.env.VITE_TWITCH_ACCESS_TOKEN}`,
+          "Client-ID": process.env.IGDB_TWITCH_CLIENT_ID,
+          Authorization: `Bearer ${process.env.IGDB_TWITCH_ACCESS_TOKEN}`,
         },
         body: query,
       });
@@ -94,8 +94,8 @@ module.exports = {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Client-ID": process.env.VITE_TWITCH_CLIENT_ID,
-          Authorization: `Bearer ${process.env.VITE_TWITCH_ACCESS_TOKEN}`,
+          "Client-ID": process.env.IGDB_TWITCH_CLIENT_ID,
+          Authorization: `Bearer ${process.env.IGDB_TWITCH_ACCESS_TOKEN}`,
         },
         body: query,
       });
@@ -136,8 +136,8 @@ module.exports = {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Client-ID": process.env.VITE_TWITCH_CLIENT_ID,
-          Authorization: `Bearer ${process.env.VITE_TWITCH_ACCESS_TOKEN}`,
+          "Client-ID": process.env.IGDB_TWITCH_CLIENT_ID,
+          Authorization: `Bearer ${process.env.IGDB_TWITCH_ACCESS_TOKEN}`,
         },
         body: query,
       });
@@ -172,8 +172,8 @@ module.exports = {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Client-ID": process.env.VITE_TWITCH_CLIENT_ID,
-          Authorization: `Bearer ${process.env.VITE_TWITCH_ACCESS_TOKEN}`,
+          "Client-ID": process.env.IGDB_TWITCH_CLIENT_ID,
+          Authorization: `Bearer ${process.env.IGDB_TWITCH_ACCESS_TOKEN}`,
         },
         body: query,
       });

@@ -45,8 +45,8 @@ The back end uses **MongoDB** with **Mongoose** for data modeling and supports f
 
 3. Create a `.env` file in the root directory with the following variables:
 
-   - VITE_TWITCH_CLIENT_ID=your_client_id
-   - VITE_TWITCH_ACCESS_TOKEN=your_access_token
+   - IGDB_TWITCH_CLIENT_ID=your_client_id
+   - IGDB_TWITCH_ACCESS_TOKEN=your_access_token
    - PORT=your_port_number
    - DATABASE_URI=your_mongodb_connection_string
 
