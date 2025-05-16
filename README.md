@@ -1,5 +1,7 @@
 # 🖥️ Video Game Management – Back End
 
+- **GitHub Front-End Repo:** [https://github.com/EthanGon/VideoGameManagementFrontEnd](https://github.com/EthanGon/VideoGameManagementFrontEnd)
+
 ## 🚀 Project Overview
 
 This is the back-end of my **Video Game Management Application**, built with Express.js. It provides a RESTful API that allows users to:
