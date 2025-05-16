@@ -10,7 +10,7 @@ This is the back-end of my **Video Game Management Application**, built with Exp
 
 The API exposes the following endpoints:
 
-- `GET /api/search` – Search for games using a title (via IGDB API)
+- `GET /api/games/search/:query` – Search for games using a title (via IGDB API)
 - `GET /api/games` – Get all saved games from the database
 - `GET /api/games/:id` – Get a specific game by ID
 - `POST /api/games` – Add a new game to the database
@@ -43,11 +43,12 @@ The back end uses **MongoDB** with **Mongoose** for data modeling and supports f
 2. Navigate to the project directory and install dependencies:  
    npm install
 
-3. Create a `.env` file in the root directory with the following variables:  
-   VITE_TWITCH_CLIENT_ID=your_client_id
-   VITE_TWITCH_ACCESS_TOKEN=your_access_token
-   PORT=your_port_number
-   DATABASE_URI=your_mongodb_connection_string
+3. Create a `.env` file in the root directory with the following variables:
+
+   - VITE_TWITCH_CLIENT_ID=your_client_id
+   - VITE_TWITCH_ACCESS_TOKEN=your_access_token
+   - PORT=your_port_number
+   - DATABASE_URI=your_mongodb_connection_string
 
 4. Start the development server:  
    npm run dev
