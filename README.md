@@ -73,5 +73,3 @@ This project helped me learn how to:
 - Handle environment variables and secure the app with **Helmet**
 - Use **Cors** to manage access from different origins
 - Troubleshoot deployment and CORS issues
-
-Special thanks to **ChatGPT** and **YouTube tutorials** that guided me through common challenges with deployment, CORS, and working with third-party APIs like IGDB.
